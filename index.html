@@ -200,6 +200,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .offer-card:hover{transform:translateY(-7px);box-shadow:0 36px 56px -34px rgba(42,36,64,.45);border-color:var(--line-gold)}
 .offer-card__arch{position:relative;aspect-ratio:1/1.12;border-radius:999px 999px 14px 14px;overflow:hidden;background:linear-gradient(180deg,var(--dusk),var(--plum));margin-bottom:1.5rem}
 .offer-card__arch svg{width:100%;height:100%}
+.offer-card__art{position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);width:75%;height:auto;filter:drop-shadow(0 16px 24px rgba(0,0,0,.45));transition:transform .6s var(--ease-out)}
+.offer-card:hover .offer-card__art{transform:translate(-50%,-55%) scale(1.03)}
 .offer-card__arch::after{content:"";position:absolute;inset:6px;border-radius:999px 999px 10px 10px;border:1px solid rgba(235,210,161,.42);pointer-events:none}
 .offer-card__glyph{position:absolute;top:.85rem;left:50%;transform:translateX(-50%);z-index:2;font-size:.9rem;color:var(--gold-2)}
 .offer-card h3{font-size:1.28rem;line-height:1.2;margin-bottom:.6rem;padding-inline:.4rem}
@@ -831,18 +833,10 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
         <div class="offer-card__arch" data-img-slot="offer-1">
           <span class="offer-card__glyph" aria-hidden="true">✦</span>
           <svg viewBox="0 0 200 224" aria-hidden="true">
-            <g fill="#f5efe6" opacity=".75"><circle cx="26" cy="42" r="1.3"/><circle cx="168" cy="36" r="1"/><circle cx="52" cy="22" r=".9"/><circle cx="182" cy="96" r="1.2"/><circle cx="18" cy="120" r="1"/><circle cx="150" cy="180" r="1"/></g>
-            <g transform="translate(100 122) rotate(-7)">
-              <rect x="-46" y="-76" width="92" height="152" rx="9" fill="#26224a" stroke="#d3a96c" stroke-width="2"/>
-              <rect x="-40" y="-70" width="80" height="140" rx="6" fill="none" stroke="#d3a96c" stroke-width=".8" opacity=".6"/>
-              <circle cx="16" cy="-44" r="22" fill="url(#moonGlow)"/>
-              <use href="#moon" x="4" y="-56" width="24" height="24" fill="#ebd2a1"/>
-              <ellipse cx="0" cy="78" rx="60" ry="26" fill="#3b2c5d"/>
-              <use href="#rabbit" x="-34" y="-16" width="64" height="76" style="--fur:#efe4d3;--ear:#dcc4d4;--eye:#16152e"/>
-              <use href="#sparkle" x="-34" y="-56" width="13" height="13" fill="#ebd2a1"/>
-              <use href="#sprig" x="-42" y="14" width="20" height="60" style="color:#a88dbe"/>
-            </g>
+            <g fill="#f5efe6" opacity=".7"><circle cx="26" cy="42" r="1.3"/><circle cx="168" cy="36" r="1"/><circle cx="52" cy="22" r=".9"/><circle cx="182" cy="96" r="1.2"/><circle cx="18" cy="120" r="1"/><circle cx="150" cy="186" r="1"/><circle cx="34" cy="176" r=".9"/><circle cx="110" cy="16" r="1"/><circle cx="76" cy="34" r=".8"/><circle cx="140" cy="60" r=".9"/><circle cx="30" cy="80" r="1"/><circle cx="176" cy="140" r=".9"/><circle cx="14" cy="158" r=".8"/></g>
+            <ellipse cx="100" cy="212" rx="78" ry="20" fill="#3b2c5d" opacity=".75"/>
           </svg>
+          <img class="offer-card__art" src="assets/offer-tarot.png" width="620" height="594" loading="lazy" alt="">
         </div>
         <h3>Pet Tarot</h3>
         <p>Turn your beloved pet into their very own tarot card. Choose from individual cards, selected card bundles, Major Arcana collections or a complete personalised tarot deck.</p>
