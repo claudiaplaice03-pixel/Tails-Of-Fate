@@ -174,7 +174,7 @@ body.menu-open .burger span::before{top:0;transform:rotate(45deg)}
 body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;min-height:100svh;color:var(--cream);overflow:hidden;display:grid;align-items:center;padding:calc(var(--nav-h) + 2rem) 0 7rem;
+.hero{position:relative;min-height:100svh;color:var(--cream);overflow:hidden;display:grid;align-items:center;padding:calc(var(--nav-h) + 1.5rem) 0 4rem;
   background:
     radial-gradient(120% 70% at 50% 115%,#3a2a5c 0%,rgba(58,42,92,0) 60%),
     radial-gradient(50% 45% at 18% 22%,rgba(94,70,130,.35),transparent 70%),
@@ -183,8 +183,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .stars path{fill:#fff;animation:twinkle var(--t,4s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
 @keyframes twinkle{from{opacity:.15}to{opacity:1}}
 .hero__glow{position:absolute;left:50%;top:40%;width:70vw;height:70vw;max-width:900px;max-height:900px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(235,210,161,.10) 0%,rgba(235,210,161,0) 60%);pointer-events:none}
-.hero__inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:3rem;align-items:center;position:relative;z-index:2}
-.hero__art{position:relative;width:min(100%,480px);justify-self:center;will-change:transform}
+.hero__inner{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:1.6rem 3rem;align-items:center;position:relative;z-index:2}
+.hero__art{position:relative;width:min(100%,320px);justify-self:center;will-change:transform}
 .hero__art svg{width:100%;height:auto;overflow:visible;opacity:0;animation:riseArt 1.6s var(--ease-out) .15s forwards}
 @keyframes riseArt{from{opacity:0;transform:translateY(34px) scale(.97)}to{opacity:1;transform:none}}
 .draw{stroke-dasharray:var(--len,2000);stroke-dashoffset:var(--len,2000);transition:stroke-dashoffset 2.6s var(--ease) .45s}
@@ -192,7 +192,9 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .tw{animation:twinkle var(--t,3s) ease-in-out infinite alternate;animation-delay:var(--dl,0s);transform-box:fill-box;transform-origin:center}
 .hero__moon{animation:moonDrift 12s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
 @keyframes moonDrift{from{transform:rotate(-4deg) translateY(0)}to{transform:rotate(6deg) translateY(-6px)}}
-.hero__copy{will-change:transform}
+.hero__banner{grid-column:1/-1;justify-self:center;width:min(100%,880px);margin:0 0 .6rem}
+.hero__banner img{width:100%;height:auto;border-radius:12px;box-shadow:0 30px 64px -32px rgba(0,0,0,.8)}
+.hero__copy{will-change:transform;align-self:start}
 .hero__mark{font-family:var(--serif);font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:500;line-height:1;letter-spacing:.06em;text-transform:uppercase;margin:.9rem 0 .7rem}
 .hero__mark em{font-style:italic;text-transform:none;letter-spacing:.01em;font-size:.62em;color:var(--gold-2);margin:0 .1em}
 .hero__tagline{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.75rem);color:var(--gold-2);margin-bottom:1rem}
@@ -493,7 +495,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   .sec{padding:5rem 0}
   .hero{padding-top:calc(var(--nav-h) + 1rem)}
   .hero__inner{grid-template-columns:1fr;text-align:center;gap:1.5rem}
-  .hero__art{width:min(62vw,36svh,340px);order:-1}
+  .hero__banner{order:-2;margin-bottom:1.2rem}
+  .hero__art{width:min(62vw,36svh,340px);order:0;margin-top:.5rem}
   .hero__lede{margin-inline:auto}
   .hero__actions,.hero__trust{justify-content:center}
   .offer__grid{grid-template-columns:repeat(2,1fr)}
@@ -521,6 +524,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   .brand__moon{width:18px;height:18px}
   .brand__tag{display:none}
   .hero{padding-bottom:5rem}
+  .hero__art{display:none}
+  .hero__banner{margin-bottom:1rem}
   .hero__trust{gap:.7rem 1.1rem}
   .scroll-cue{display:none}
   .offer__grid{grid-template-columns:1fr;gap:1.2rem}
@@ -555,7 +560,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 @media (max-height:560px){
   :root{--nav-h:64px}
   .hero{padding:calc(var(--nav-h) + .5rem) 0 3.5rem}
-  .hero__art{width:min(42vw,24svh,170px)}
+  .hero__art{display:none}
+  .hero__banner{width:min(100%,540px);margin-bottom:.6rem}
   .hero__lede+.hero__lede{margin-top:.5rem}
   .hero__trust{display:none}
   .arcana__head .lede{display:none}
@@ -820,11 +826,15 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   <div class="hero__glow" aria-hidden="true"></div>
 
   <div class="wrap hero__inner">
+    <h1 class="hero__banner" data-load style="--d:0" data-img-slot="hero-wordmark">
+      <picture>
+        <source srcset="assets/banner.webp" type="image/webp">
+        <img src="assets/banner.jpg" width="1600" height="583" fetchpriority="high"
+             alt="Tails of Fate — pet tarot, familiar portraits, magical goods">
+      </picture>
+    </h1>
+
     <div class="hero__copy" data-speed="0.16">
-      <p class="eyebrow" data-load style="--d:0">⋆⁺｡˚⋆˙‧₊☽ ◯ ☾₊‧˙⋆˚｡⁺⋆</p>
-      <!-- Swap the text below for <img src="..." alt="Tails of Fate"> when the banner artwork arrives -->
-      <h1 class="hero__mark" data-load style="--d:120" data-img-slot="hero-wordmark">Tails <em>of</em> Fate</h1>
-      <p class="hero__kinds" data-load style="--d:280">Pet tarot • Familiar portraits • Magical goods</p>
       <p class="hero__lede" data-load style="--d:360">A little corner where pets, magic and creativity meet.</p>
       <p class="hero__lede" data-load style="--d:420">Turn your beloved companion into a piece of magical artwork, discover handcrafted spell jars, or find a few little treasures to add some magic to your everyday.</p>
       <div class="hero__actions" data-load style="--d:520">
