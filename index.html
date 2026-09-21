@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#12122b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 /* =========================================================
    TAILS OF FATE — single-file build
@@ -17,11 +17,11 @@
    ========================================================= */
 :root{
   /* night */
-  --navy:#12122b;
-  --ink:#16152e;
-  --night:#1e1c3f;
-  --dusk:#2a2452;
-  --plum:#3c2b59;
+  --navy:#150c24;
+  --ink:#1a1029;
+  --night:#241939;
+  --dusk:#31214a;
+  --plum:#402c55;
   --violet:#5b4278;
   /* lavender */
   --lilac:#a88dbe;
@@ -51,6 +51,7 @@
   --ease-out:cubic-bezier(.16,1,.3,1);
   --nav-h:92px;
   --radius:20px;
+  --mist:url('assets/texture.jpg');
 }
 
 /* ---------- Base ---------- */
@@ -85,7 +86,8 @@ figure{margin:0}
 .sec--light{background:var(--cream)}
 .sec--parch{background:var(--parchment)}
 .sec--night{color:var(--cream);overflow:hidden;
-  background:radial-gradient(90% 60% at 50% 0%,rgba(91,66,120,.5) 0%,transparent 60%),
+  background:radial-gradient(90% 60% at 50% 0%,rgba(91,66,120,.45) 0%,transparent 60%),
+             var(--mist) center/cover,
              linear-gradient(180deg,var(--ink) 0%,var(--night) 55%,var(--dusk) 100%)}
 .wave{position:absolute;left:0;right:0;width:100%;height:64px;z-index:3;pointer-events:none}
 .wave--bottom{bottom:-1px}
@@ -164,7 +166,7 @@ figure{margin:0}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:100%;height:1.5px;background:var(--cream);transition:transform .4s var(--ease),top .4s var(--ease)}
 .burger span::before{top:-7px}
 .burger span::after{top:7px}
-.menu{position:fixed;inset:0;z-index:190;background:var(--ink);color:var(--cream);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s;overflow-y:auto}
+.menu{position:fixed;inset:0;z-index:190;background:linear-gradient(180deg,rgba(13,7,22,.72),rgba(13,7,22,.88)),var(--mist) center/cover,var(--ink);color:var(--cream);display:grid;place-items:center;opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s;overflow-y:auto}
 .menu.is-open{opacity:1;visibility:visible}
 .menu ul{text-align:center;padding:5rem 0 1rem}
 .menu a{font-family:var(--serif);font-size:clamp(1.5rem,6vw,2.1rem);display:block;padding:.42rem;opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);transition-delay:calc(var(--i,0)*60ms + 120ms)}
@@ -178,8 +180,9 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:100svh;color:var(--cream);overflow:hidden;display:block;padding:var(--nav-h) 0 7rem;
   background:
-    radial-gradient(120% 70% at 50% 115%,#3a2a5c 0%,rgba(58,42,92,0) 60%),
-    radial-gradient(50% 45% at 18% 22%,rgba(94,70,130,.35),transparent 70%),
+    radial-gradient(120% 70% at 50% 115%,rgba(74,52,110,.5) 0%,rgba(58,42,92,0) 60%),
+    radial-gradient(50% 45% at 18% 22%,rgba(94,70,130,.3),transparent 70%),
+    var(--mist) center/cover,
     linear-gradient(180deg,var(--navy) 0%,var(--night) 55%,var(--dusk) 100%)}
 .stars{position:absolute;inset:-10% 0;width:100%;height:120%;pointer-events:none;will-change:transform}
 .stars path{fill:#fff;animation:twinkle var(--t,4s) ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
@@ -194,8 +197,34 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .tw{animation:twinkle var(--t,3s) ease-in-out infinite alternate;animation-delay:var(--dl,0s);transform-box:fill-box;transform-origin:center}
 .hero__moon{animation:moonDrift 12s ease-in-out infinite alternate;transform-box:fill-box;transform-origin:center}
 @keyframes moonDrift{from{transform:rotate(-4deg) translateY(0)}to{transform:rotate(6deg) translateY(-6px)}}
-.masthead{position:relative;z-index:2;width:100%;margin:0 0 3rem;line-height:0}
-.masthead img{width:100%;height:auto;max-width:1800px;margin-inline:auto}
+/* ---------- Masthead ---------- */
+.masthead{position:relative;z-index:2;width:100%;margin:0 0 3.2rem;
+  background:linear-gradient(180deg,rgba(13,7,22,.34),rgba(13,7,22,0) 48%,rgba(13,7,22,.16)),var(--mist) center/cover,var(--night);
+  box-shadow:inset 0 -1px 0 rgba(211,169,108,.26)}
+.masthead__plate{position:relative;width:min(100% - 2.6rem,1140px);margin-inline:auto;
+  padding:clamp(2.4rem,5.4vw,4rem) clamp(2.2rem,6vw,5rem)}
+.masthead__plate::before{content:"";position:absolute;inset:0;border:1px solid rgba(211,169,108,.55);border-radius:3px;pointer-events:none}
+.masthead__corner{position:absolute;width:clamp(74px,11vw,152px);height:auto;color:var(--gold-2);opacity:.92;pointer-events:none}
+.masthead__corner--tl{top:-2px;left:-2px}
+.masthead__corner--tr{top:-2px;right:-2px;transform:scaleX(-1)}
+.masthead__corner--bl{bottom:-2px;left:-2px;transform:scaleY(-1)}
+.masthead__corner--br{bottom:-2px;right:-2px;transform:scale(-1)}
+.masthead__celestial{width:clamp(180px,26vw,300px);height:auto;margin:0 auto clamp(.4rem,1.4vw,1rem);display:block}
+.masthead__name{font-family:'Cormorant Garamond',var(--serif);font-weight:400;
+  font-size:clamp(2.7rem,8.2vw,5.6rem);line-height:1.02;letter-spacing:.005em;
+  text-align:center;color:var(--gold-2)}
+.masthead__name em{font-style:italic;font-weight:300;font-size:.78em;margin:0 .06em}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .masthead__name{
+    background:linear-gradient(174deg,#fdf3d9 0%,#f2dcab 24%,#dcb275 52%,#c49a5c 66%,#f4e6bd 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+}
+.masthead__kinds{font-family:'Cormorant Garamond',var(--serif);font-weight:400;
+  font-size:clamp(.74rem,1.7vw,1.1rem);letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(238,228,244,.82);text-align:center;line-height:1.9;margin-top:clamp(.5rem,1.4vw,.9rem)}
+.masthead__kinds b{font-weight:400;color:var(--gold-2);margin:0 .5em}
+.masthead__kinds-last{display:block}
+.masthead__rule{width:clamp(200px,32vw,420px);height:auto;margin:clamp(.9rem,2vw,1.4rem) auto 0;display:block}
 .hero__copy{will-change:transform;align-self:start}
 .hero__mark{font-family:var(--serif);font-size:clamp(2.6rem,6.4vw,4.6rem);font-weight:500;line-height:1;letter-spacing:.06em;text-transform:uppercase;margin:.9rem 0 .7rem}
 .hero__mark em{font-style:italic;text-transform:none;letter-spacing:.01em;font-size:.62em;color:var(--gold-2);margin:0 .1em}
@@ -228,7 +257,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 
 /* ---------- Arcana fan (pinned) ---------- */
 .arcana{position:relative;height:150vh;color:var(--cream);
-  background:linear-gradient(180deg,var(--navy) 0%,var(--night) 40%,var(--dusk) 100%)}
+  background:var(--mist) center/cover fixed,linear-gradient(180deg,var(--navy) 0%,var(--night) 40%,var(--dusk) 100%)}
 .arcana__pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column}
 .arcana .stars{inset:0;height:100%}
 .arcana__head{position:relative;z-index:2;padding-top:calc(var(--nav-h) + 1.4rem);text-align:center}
@@ -346,7 +375,8 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .faq__a p+p{margin-top:.8rem}
 
 /* ---------- CTA ---------- */
-.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden;color:var(--cream);background:var(--navy)}
+.cta{padding:8rem 0;text-align:center;position:relative;overflow:hidden;color:var(--cream);
+  background:linear-gradient(180deg,rgba(13,7,22,.5),rgba(13,7,22,.2)),var(--mist) center/cover,var(--navy)}
 .cta .stars{inset:0;height:100%}
 .cta__inner{position:relative;z-index:2}
 .cta .title{font-size:clamp(2.2rem,5vw,3.9rem);margin-bottom:1.1rem}
@@ -357,7 +387,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
 
 /* ---------- Footer ---------- */
-.footer{background:#0e0e20;color:rgba(245,239,230,.72);padding:4.5rem 0 2rem;border-top:1px solid rgba(235,210,161,.12)}
+.footer{background:linear-gradient(180deg,rgba(10,5,17,.86),rgba(10,5,17,.94)),var(--mist) center/cover,#0e0a18;color:rgba(245,239,230,.72);padding:4.5rem 0 2rem;border-top:1px solid rgba(235,210,161,.12)}
 .footer__top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem}
 .footer .brand{align-items:flex-start}
 .footer h4{font-family:var(--sans);font-size:.58rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2);margin-bottom:1.2rem}
@@ -520,6 +550,9 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 }
 @media (max-width:640px){
   :root{--nav-h:74px}
+  .masthead__kinds{letter-spacing:.24em;line-height:2.15}
+  .masthead__kinds span{display:block}
+  .masthead__kinds b{display:none}
   .wrap{width:min(1200px,calc(100% - 2rem))}
   .sec{padding:4rem 0}
   .brand__name{font-size:1.28rem}
@@ -654,6 +687,24 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 
     <symbol id="sparkle" viewBox="-10 -10 20 20">
       <path d="M0-10C1-3 3-1 10 0 3 1 1 3 0 10-1 3-3 1-10 0-3-1-1-3 0-10z"/>
+    </symbol>
+
+    <!-- Long-rayed star with a smaller rotated one behind it, as on the banner -->
+    <symbol id="star8" viewBox="-50 -50 100 100">
+      <path d="M0-50C3-16 6-6 50 0 6 6 3 16 0 50-3 16-6 6-50 0-6-6-3-16 0-50Z"/>
+      <path d="M0-27C1.6-9 3.2-3.2 27 0 3.2 3.2 1.6 9 0 27-1.6 9-3.2 3.2-27 0-3.2-3.2-1.6-9 0-27Z" transform="rotate(45)" opacity=".75"/>
+    </symbol>
+
+    <!-- Masthead corner flourish: a spray of sprigs fanning in from the corner.
+         Each sprig is offset so its stem base sits on the group origin, then
+         rotated to fan across the diagonal. -->
+    <symbol id="corner" viewBox="0 0 150 150">
+      <g transform="translate(20 20)" style="color:currentColor;--leaf:currentColor;--berry:currentColor">
+        <g transform="rotate(112)"><use href="#sprig" x="-11" y="-74" width="22" height="74" opacity=".62"/></g>
+        <g transform="rotate(135)"><use href="#sprig" x="-15" y="-112" width="30" height="112"/></g>
+        <g transform="rotate(158)"><use href="#sprig" x="-11" y="-74" width="22" height="74" opacity=".62"/></g>
+      </g>
+      <use href="#star8" x="2" y="2" width="26" height="26" fill="currentColor"/>
     </symbol>
 
     <symbol id="paw" viewBox="0 0 24 24">
@@ -827,16 +878,34 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   <svg class="stars" data-speed="0.38" data-count="16" data-min="1.8" data-max="3" aria-hidden="true"></svg>
   <div class="hero__glow" aria-hidden="true"></div>
 
-  <h1 class="masthead" data-img-slot="hero-wordmark">
-    <picture>
-      <source type="image/webp" sizes="100vw"
-              srcset="assets/banner-1100.webp 1100w, assets/banner-2200.webp 2200w">
-      <img src="assets/banner-2200.jpg" sizes="100vw"
-           srcset="assets/banner-1100.jpg 1100w, assets/banner-2200.jpg 2200w"
-           width="2200" height="801" fetchpriority="high"
-           alt="Tails of Fate — pet tarot, familiar portraits, magical goods">
-    </picture>
-  </h1>
+  <div class="masthead">
+    <div class="masthead__plate">
+      <svg class="masthead__corner masthead__corner--tl" viewBox="0 0 150 150" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="masthead__corner masthead__corner--tr" viewBox="0 0 150 150" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="masthead__corner masthead__corner--bl" viewBox="0 0 150 150" aria-hidden="true"><use href="#corner"/></svg>
+      <svg class="masthead__corner masthead__corner--br" viewBox="0 0 150 150" aria-hidden="true"><use href="#corner"/></svg>
+
+      <svg class="masthead__celestial" viewBox="0 0 300 72" aria-hidden="true">
+        <g transform="rotate(-18 106 36)"><use href="#moon" x="82" y="12" width="48" height="48" fill="#e6c4a4"/></g>
+        <use href="#star8" x="130" y="1" width="40" height="70" fill="#f4e2b4"/>
+        <g transform="translate(300 0) scale(-1 1)"><g transform="rotate(-18 106 36)"><use href="#moon" x="82" y="12" width="48" height="48" fill="#e6c4a4"/></g></g>
+        <g fill="#e8c9a8">
+          <circle cx="56" cy="38" r="2"/><circle cx="244" cy="38" r="2"/>
+          <circle cx="118" cy="14" r="1.5" opacity=".85"/><circle cx="182" cy="14" r="1.5" opacity=".85"/>
+          <circle cx="150" cy="70" r="1.4" opacity=".7"/>
+        </g>
+      </svg>
+
+      <h1 class="masthead__name">Tails <em>of</em> Fate</h1>
+
+      <p class="masthead__kinds"><span>Pet Tarot</span><b aria-hidden="true">✦</b><span>Familiar Portraits</span><span class="masthead__kinds-last">Magical Goods</span></p>
+
+      <svg class="masthead__rule" viewBox="0 0 420 14" aria-hidden="true">
+        <path d="M6 7h176M238 7h176" stroke="#d3a96c" stroke-width="1" opacity=".75" stroke-linecap="round"/>
+        <use href="#star8" x="196" y="-1" width="28" height="16" fill="#e8c9a8"/>
+      </svg>
+    </div>
+  </div>
 
   <div class="wrap hero__inner">
     <div class="hero__copy" data-speed="0.16">
