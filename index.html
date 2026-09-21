@@ -2517,7 +2517,13 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
       layers.forEach(function (l) {
         l.style.transform = 'translate3d(0,' + (y * +l.dataset.speed).toFixed(2) + 'px,0)';
       });
-      if (heroCopy) heroCopy.style.opacity = clamp(1 - y / (vh * .7), 0, 1).toFixed(3);
+      /* On narrow screens the hero copy sits below the fold, so fading it out
+         would dim the text while it is still being read. */
+      if (heroCopy) {
+        heroCopy.style.opacity = window.innerWidth > 900
+          ? clamp(1 - (y - vh * .35) / (vh * .8), 0, 1).toFixed(3)
+          : '';
+      }
     }
 
     if (arcana) {
