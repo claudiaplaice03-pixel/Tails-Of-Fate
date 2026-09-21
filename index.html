@@ -207,6 +207,22 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 .offer-card .link-arrow{margin-top:1.2rem;padding-inline:.4rem}
 .offer-card__price{display:block;margin-top:.9rem;padding-inline:.4rem;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
 
+/* ---------- Category strip ---------- */
+.catstrip{position:relative;background:var(--cream);padding:3rem 0 3.4rem;overflow:hidden}
+.catstrip__sprig{position:absolute;top:50%;width:clamp(40px,5.5vw,92px);height:auto;color:#a88dbe;opacity:.85;pointer-events:none}
+.catstrip__sprig--l{left:.6vw;transform:translateY(-50%) rotate(-12deg)}
+.catstrip__sprig--r{right:.6vw;transform:translateY(-50%) rotate(12deg) scaleX(-1)}
+.catstrip__grid{display:grid;grid-template-columns:repeat(5,1fr);row-gap:2.4rem}
+.cat{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:.2rem .8rem}
+.cat::after{content:"";position:absolute;right:0;top:14%;bottom:14%;width:1px;background:var(--line)}
+.cat:nth-child(5n)::after,.cat:last-child::after{display:none}
+.cat img{width:clamp(84px,9vw,134px);height:auto;transition:transform .55s var(--ease-out)}
+.cat:hover img{transform:translateY(-6px) scale(1.04)}
+.cat h3{font-size:clamp(.96rem,1.4vw,1.18rem);line-height:1.3;margin:.85rem 0 .75rem;color:var(--plum)}
+.cat__shop{display:inline-flex;align-items:center;gap:.5rem;font-size:.56rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);transition:gap .35s var(--ease)}
+.cat:hover .cat__shop{gap:.95rem}
+.cat__shop svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
 /* ---------- Arcana fan (pinned) ---------- */
 .arcana{position:relative;height:150vh;color:var(--cream);
   background:var(--mist) center/cover fixed,linear-gradient(180deg,var(--navy) 0%,var(--night) 40%,var(--dusk) 100%)}
@@ -481,6 +497,9 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   .hero__art{width:min(62vw,36svh,340px);order:-1}
   .hero__lede{margin-inline:auto}
   .hero__actions,.hero__trust{justify-content:center}
+  .catstrip__grid{grid-template-columns:repeat(3,1fr)}
+  .cat:nth-child(5n)::after{display:block}
+  .cat:nth-child(3n)::after,.cat:last-child::after{display:none}
   .offer__grid{grid-template-columns:repeat(2,1fr)}
   .tiers{grid-template-columns:repeat(3,1fr)}
   .tiers--2{grid-template-columns:repeat(2,1fr)}
@@ -508,6 +527,11 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   .hero{padding-bottom:7rem}
   .hero__trust{gap:.7rem 1.1rem}
   .scroll-cue{display:none}
+  .catstrip{padding:2.2rem 0 2.6rem}
+  .catstrip__grid{grid-template-columns:repeat(2,1fr);row-gap:1.8rem}
+  .cat:nth-child(3n)::after{display:block}
+  .cat:nth-child(2n)::after,.cat:last-child::after{display:none}
+  .catstrip__sprig{display:none}
   .offer__grid{grid-template-columns:1fr;gap:1.2rem}
   .tiers,.tiers--2{grid-template-columns:1fr}
   .prod-grid{grid-template-columns:1fr;gap:1.1rem}
@@ -816,6 +840,41 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
   <svg class="wave wave--bottom" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 70V40C120 8 240 8 360 40s240 32 360 0 240-32 360 0 240 32 360 0v30z" fill="#f5efe6"/></svg>
 </section>
 
+<!-- ============ CATEGORY STRIP ============ -->
+<section class="catstrip" aria-label="Shop by category">
+  <svg class="catstrip__sprig catstrip__sprig--l" viewBox="0 0 80 240" aria-hidden="true"><use href="#sprig"/></svg>
+  <svg class="catstrip__sprig catstrip__sprig--r" viewBox="0 0 80 240" aria-hidden="true"><use href="#sprig"/></svg>
+  <div class="wrap">
+    <div class="catstrip__grid">
+      <a class="cat" href="#tarot">
+        <img src="assets/cat-tarot.png" width="300" height="300" loading="lazy" alt="">
+        <h3>Custom<br>Pet Tarot</h3>
+        <span class="cat__shop">Shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="cat" href="#portraits">
+        <img src="assets/cat-portraits.png" width="300" height="300" loading="lazy" alt="">
+        <h3>Familiar<br>Portraits</h3>
+        <span class="cat__shop">Shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="cat" href="#jars">
+        <img src="assets/cat-spells.png" width="300" height="300" loading="lazy" alt="">
+        <h3>Spells &amp;<br>Rituals</h3>
+        <span class="cat__shop">Shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="cat" href="#decks">
+        <img src="assets/cat-decks.png" width="300" height="300" loading="lazy" alt="">
+        <h3>Tarot &amp; Oracle<br>Decks</h3>
+        <span class="cat__shop">Shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+      <a class="cat" href="#stickers">
+        <img src="assets/cat-gifts.png" width="300" height="300" loading="lazy" alt="">
+        <h3>Gifts &amp;<br>Keepsakes</h3>
+        <span class="cat__shop">Shop <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ WHAT I OFFER ============ -->
 <section class="sec sec--light" id="shop">
   <div class="wrap">
@@ -1018,7 +1077,7 @@ body.menu-open .burger span::after{top:0;transform:rotate(-45deg)}
 </section>
 
 <!-- ============ TAROT — options & prices ============ -->
-<section class="sec sec--night on-dark">
+<section class="sec sec--night on-dark" id="decks">
   <div class="wrap">
     <div class="sec-head sec-head--center" data-reveal="fade">
       <p class="orn"><span>☽</span></p>
